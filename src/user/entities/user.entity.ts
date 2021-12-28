@@ -7,23 +7,23 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('users')
+@Entity('User')
 export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ nullable: true })
-  first_name?: string;
+  firstName?: string;
 
   @Column({ nullable: true })
-  last_name?: string;
+  lastName?: string;
 
   @Column()
-  @IsEmail()
+  @IsEmail({ unique: true })
   email: string;
 
-  @Column({ nullable: true })
-  password?: string;
+  @Column()
+  password: string;
 
   @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
